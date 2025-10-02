@@ -1,8 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Servico } from '../entities/servico.entity';
-import { ILike, Repository } from 'typeorm';
-import { DeleteResult } from 'typeorm/browser';
+import { DeleteResult, ILike, Repository } from 'typeorm';
 
 @Injectable()
 export class ServicoService {

@@ -8,6 +8,7 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  Put,
 } from '@nestjs/common';
 import { Categoria, OpcoesCategoria } from '../entities/categoria.entity';
 import { CategoriaService } from '../services/categoria.service';
@@ -44,5 +45,11 @@ export class CategoriaController {
   @HttpCode(HttpStatus.NO_CONTENT)
   delete(@Param('id', ParseIntPipe) id: number) {
     return this.CategoriaService.delete(id);
+  }
+
+  @Put()
+  @HttpCode(HttpStatus.OK)
+  update(@Body() categoria: Categoria): Promise<Categoria> {
+    return this.CategoriaService.update(categoria);
   }
 }
