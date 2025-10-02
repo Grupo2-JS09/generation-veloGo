@@ -1,5 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+// import { Servico } from '../../servico/entities/servico.entity';
 
 export enum OpcoesCategoria {
   CARRO = 'carro',
