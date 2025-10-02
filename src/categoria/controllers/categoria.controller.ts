@@ -1,10 +1,16 @@
 import {
   Body,
+  Controller,
   Delete,
+  Get,
   HttpCode,
   HttpStatus,
+  Param,
   ParseIntPipe,
+  Post,
 } from '@nestjs/common';
+import { Categoria, OpcoesCategoria } from '../entities/categoria.entity';
+import { CategoriaService } from '../services/categoria.service';
 
 @Controller('/categorias')
 export class CategoriaController {
@@ -24,10 +30,8 @@ export class CategoriaController {
 
   @Get('/categoria/:categoria')
   @HttpCode(HttpStatus.OK)
-  findAllByCategoria(
-    @Param('categoria') categoria: string,
-  ): Promise<Categoria[]> {
-    return this.CategoriaService.findAllByName(categoria);
+  findAllTipo(@Param('categoria') tipo: OpcoesCategoria): Promise<Categoria[]> {
+    return this.CategoriaService.findAllTipo(tipo);
   }
 
   @Post()
