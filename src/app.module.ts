@@ -12,7 +12,7 @@ import { UsuarioModule } from './usuario/usuario.module';
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'db',
+      database: 'db_veloGo',
       entities: [Usuario],
       synchronize: true,
       logging: true,
