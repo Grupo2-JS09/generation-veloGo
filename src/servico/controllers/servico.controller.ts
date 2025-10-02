@@ -3,6 +3,7 @@ import { Servico } from '../entities/servico.entity';
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -44,5 +45,11 @@ export class ServicoController {
   @HttpCode(HttpStatus.OK)
   update(@Body() servico: Servico): Promise<Servico> {
     return this.servicoService.update(servico);
+  }
+
+  @Delete('/:id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  delete(@Param('id', ParseIntPipe) id: number) {
+    return this.servicoService.delete(id);
   }
 }

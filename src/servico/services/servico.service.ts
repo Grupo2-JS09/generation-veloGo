@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Servico } from '../entities/servico.entity';
 import { ILike, Repository } from 'typeorm';
+import { DeleteResult } from 'typeorm/browser';
 
 @Injectable()
 export class ServicoService {
@@ -43,5 +44,11 @@ export class ServicoService {
     await this.finfById(servico.id);
 
     return await this.servicoRepository.save(servico);
+  }
+
+  async delete(id: number): Promise<DeleteResult> {
+    await this.finfById(id);
+
+    return await this.servicoRepository.delete(id);
   }
 }
