@@ -1,5 +1,13 @@
-import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { ServicoService } from '../services/servico.service';
+import { Servico } from '../entities/servico.entity';
 
 @Controller('/servicos')
 export class ServicoController {
@@ -7,7 +15,13 @@ export class ServicoController {
 
   @Get()
   @HttpCode(HttpStatus.OK)
-  findAll(): Promise<Service[]> {
-    return this.serviceService.findAll();
+  findAll(): Promise<Servico[]> {
+    return this.servicoController.findAll();
+  }
+
+  @Get('/:id')
+  @HttpCode(HttpStatus.OK)
+  findById(@Param('id', ParseIntPipe) id: number): Promise<Servico> {
+    return this.servicoController.finfById(id);
   }
 }
