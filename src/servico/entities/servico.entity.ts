@@ -7,15 +7,15 @@ export class Servico {
   id: number;
 
   @IsNotEmpty()
-  @Column('decimal', { scale: 2, precision: 5 })
+  @Column({ type: 'decimal', precision: 19, scale: 4 })
   preco_km: number;
 
   @IsNotEmpty()
-  @Column({ length: 100, nullable: false })
+  @Column({ nullable: false })
   distancia: number;
 
   @IsNotEmpty()
-  @Column({ length: 100, nullable: false })
+  @Column({ nullable: false })
   velocidade_media: number;
 
   @IsNotEmpty()
