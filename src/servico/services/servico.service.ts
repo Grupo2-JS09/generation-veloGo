@@ -12,13 +12,22 @@ export class ServicoService {
   ) {}
 
   async findAll(): Promise<Servico[]> {
-    return await this.servicoRepository.find();
+    return await this.servicoRepository.find({
+      relations: {
+        usuario: true,
+        categoria: true,
+      },
+    });
   }
 
   async finfById(id: number): Promise<Servico> {
     const servico = await this.servicoRepository.findOne({
       where: {
         id,
+      },
+      relations: {
+        usuario: true,
+        categoria: true,
       },
     });
 
@@ -32,6 +41,10 @@ export class ServicoService {
     return await this.servicoRepository.find({
       where: {
         destino: ILike(`%${destino}%`),
+      },
+      relations: {
+        usuario: true,
+        categoria: true,
       },
     });
   }

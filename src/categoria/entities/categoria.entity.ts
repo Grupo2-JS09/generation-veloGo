@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-// import { Servico } from '../../servico/entities/servico.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Servico } from '../../servico/entities/servico.entity';
 
 export enum OpcoesCategoria {
   CARRO = 'carro',
@@ -21,6 +21,6 @@ export class Categoria {
   })
   tipo: OpcoesCategoria;
 
-  // @OneToMany(() => Servico, (servico) => servico.categoria)
-  // servico: Servico[];
+  @OneToMany(() => Servico, (servico) => servico.id)
+  servico: Servico[];
 }
