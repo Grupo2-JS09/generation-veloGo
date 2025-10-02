@@ -1,7 +1,9 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Usuario } from './usuario/entities/usuario.entity';
 import { UsuarioModule } from './usuario/usuario.module';
-
+import { Servico } from './servico/entities/servico.entity';
+import { ServicoModule } from './servico/servico.module';
+import { Module } from '@nestjs/common';
 
 @Module({
   imports: [
@@ -12,11 +14,12 @@ import { UsuarioModule } from './usuario/usuario.module';
       username: 'root',
       password: 'root',
       database: 'db_veloGo',
-      entities: [Usuario],
+      entities: [Usuario, Servico],
       synchronize: true,
       logging: true,
     }),
-    UsuarioModule
+    UsuarioModule,
+    ServicoModule,
   ],
   controllers: [],
   providers: [],
