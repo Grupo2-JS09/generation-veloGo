@@ -1,5 +1,7 @@
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { OneToMany } from 'typeorm/browser';
+import { Servico } from '../../servico/entities/servico.entity';
 
 @Entity({ name: 'tb_usuario' })
 export class Usuario {
@@ -23,6 +25,6 @@ export class Usuario {
   @Column({ length: 5000 })
   foto: string;
 
-  // @OneToMany(() => Corrida, (corrida) => corrida.usuario, {cascade: true})
-  // corrida: Corrida[];
+  @OneToMany(() => Servico, (servico) => servico.id)
+  servico: Servico[];
 }
