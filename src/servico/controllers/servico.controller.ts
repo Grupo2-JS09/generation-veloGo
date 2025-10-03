@@ -31,8 +31,8 @@ export class ServicoController {
 
   @Get('/destino/:destino')
   @HttpCode(HttpStatus.OK)
-  findAllByDestino(@Param('titulo') titulo: string): Promise<Servico[]> {
-    return this.servicoService.findAllByDestino(titulo);
+  findAllByDestino(@Param('destino') destino: string): Promise<Servico[]> {
+    return this.servicoService.findAllByDestino(destino);
   }
 
   @Post()

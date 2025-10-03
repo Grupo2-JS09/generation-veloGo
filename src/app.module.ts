@@ -6,6 +6,7 @@ import { ServicoModule } from './servico/servico.module';
 import { Module } from '@nestjs/common';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { CategoriaModule } from './categoria/categoria.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,12 +18,13 @@ import { CategoriaModule } from './categoria/categoria.module';
       password: 'root',
       database: 'db_veloGo',
       entities: [Usuario, Servico, Categoria],
-      synchronize: true,
+      synchronize: false,
       // logging: true,
     }),
     UsuarioModule,
     ServicoModule,
     CategoriaModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
