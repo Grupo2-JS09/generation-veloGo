@@ -29,6 +29,9 @@ export class UsuarioService {
       where: {
         id,
       },
+      relations: {
+        servico: true,
+      },
     });
 
     if (!usuario) throw new Error('Usuário não encontrado');

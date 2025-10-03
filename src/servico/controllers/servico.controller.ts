@@ -35,6 +35,22 @@ export class ServicoController {
     return this.servicoService.findAllByDestino(destino);
   }
 
+  @Get('/viagem/:id')
+  @HttpCode(HttpStatus.OK)
+  CalcularDestino(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<Servico | number> {
+    return this.servicoService.calcularViagem(id);
+  }
+
+  @Get('/viagem/tempo/:id')
+  @HttpCode(HttpStatus.OK)
+  CalcularTempo(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<Servico | number> {
+    return this.servicoService.calcularTempo(id);
+  }
+
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() servico: Servico): Promise<Servico> {

@@ -24,6 +24,6 @@ export class Usuario {
   @Column({ length: 5000 })
   foto: string;
 
-  @OneToMany(() => Servico, (servico) => servico.id)
+  @OneToMany(() => Servico, (servico) => servico.usuario)
   servico: Servico[];
 }

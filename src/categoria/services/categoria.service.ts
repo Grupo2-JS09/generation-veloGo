@@ -11,11 +11,7 @@ export class CategoriaService {
   ) {}
 
   async findAll(): Promise<Categoria[]> {
-    return await this.categoriaRepsoitory.find({
-      relations: {
-        servico: true,
-      },
-    });
+    return await this.categoriaRepsoitory.find();
   }
 
   async findById(id: number): Promise<Categoria> {

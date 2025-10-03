@@ -63,4 +63,42 @@ export class ServicoService {
 
     return await this.servicoRepository.delete(id);
   }
+
+  async calcularViagem(id: number): Promise<number> {
+    const servico = await this.servicoRepository.findOne({
+      where: {
+        id,
+      },
+      relations: {
+        usuario: true,
+        categoria: true,
+      },
+    });
+
+    if (!servico)
+      throw new HttpException('Serviço não encontrado!', HttpStatus.NOT_FOUND);
+
+    const valorCorrida = servico.distancia * servico.preco_km;
+
+    return valorCorrida;
+  }
+
+  async calcularTempo(id: number): Promise<number> {
+    const servico = await this.servicoRepository.findOne({
+      where: {
+        id,
+      },
+      relations: {
+        usuario: true,
+        categoria: true,
+      },
+    });
+
+    if (!servico)
+      throw new HttpException('Serviço não encontrado!', HttpStatus.NOT_FOUND);
+
+    const tempoTotal = (servico.distancia / servico.velocidade_media) * 60;
+
+    return tempoTotal;
+  }
 }

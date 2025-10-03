@@ -9,7 +9,7 @@ export class Servico {
   id: number;
 
   @IsNotEmpty()
-  @Column({ type: 'decimal', precision: 19, scale: 4 })
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   preco_km: number;
 
   @IsNotEmpty()
