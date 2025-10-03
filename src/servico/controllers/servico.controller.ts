@@ -31,8 +31,24 @@ export class ServicoController {
 
   @Get('/destino/:destino')
   @HttpCode(HttpStatus.OK)
-  findAllByDestino(@Param('titulo') titulo: string): Promise<Servico[]> {
-    return this.servicoService.findAllByDestino(titulo);
+  findAllByDestino(@Param('destino') destino: string): Promise<Servico[]> {
+    return this.servicoService.findAllByDestino(destino);
+  }
+
+  @Get('/viagem/:id')
+  @HttpCode(HttpStatus.OK)
+  CalcularDestino(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<Servico | number> {
+    return this.servicoService.calcularViagem(id);
+  }
+
+  @Get('/viagem/tempo/:id')
+  @HttpCode(HttpStatus.OK)
+  CalcularTempo(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<Servico | number> {
+    return this.servicoService.calcularTempo(id);
   }
 
   @Post()

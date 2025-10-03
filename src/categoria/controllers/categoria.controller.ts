@@ -8,8 +8,9 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  Put,
 } from '@nestjs/common';
-import { Categoria, OpcoesCategoria } from '../entities/categoria.entity';
+import { Categoria } from '../entities/categoria.entity';
 import { CategoriaService } from '../services/categoria.service';
 
 @Controller('/categorias')
@@ -30,7 +31,7 @@ export class CategoriaController {
 
   @Get('/categoria/:categoria')
   @HttpCode(HttpStatus.OK)
-  findAllTipo(@Param('categoria') tipo: OpcoesCategoria): Promise<Categoria[]> {
+  findAllTipo(@Param('categoria') tipo: string): Promise<Categoria[]> {
     return this.CategoriaService.findAllTipo(tipo);
   }
 
@@ -44,5 +45,11 @@ export class CategoriaController {
   @HttpCode(HttpStatus.NO_CONTENT)
   delete(@Param('id', ParseIntPipe) id: number) {
     return this.CategoriaService.delete(id);
+  }
+
+  @Put('/atualizar')
+  @HttpCode(HttpStatus.OK)
+  update(@Body() categoria: Categoria): Promise<Categoria> {
+    return this.CategoriaService.update(categoria);
   }
 }

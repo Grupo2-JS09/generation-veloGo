@@ -1,7 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, Repository } from 'typeorm';
-import { OpcoesCategoria } from '../entities/categoria.entity';
+import { DeleteResult, ILike, Repository } from 'typeorm';
 import { Categoria } from './../entities/categoria.entity';
 
 @Injectable()
@@ -12,11 +11,7 @@ export class CategoriaService {
   ) {}
 
   async findAll(): Promise<Categoria[]> {
-    return await this.categoriaRepsoitory.find({
-      relations: {
-        // servico: true,
-      },
-    });
+    return await this.categoriaRepsoitory.find();
   }
 
   async findById(id: number): Promise<Categoria> {
@@ -25,7 +20,7 @@ export class CategoriaService {
         id,
       },
       relations: {
-        // servico: true,
+        servico: true,
       },
     });
 
@@ -38,13 +33,13 @@ export class CategoriaService {
     return categoria;
   }
 
-  async findAllTipo(tipo: OpcoesCategoria): Promise<Categoria[]> {
+  async findAllTipo(tipo: string): Promise<Categoria[]> {
     return await this.categoriaRepsoitory.find({
       where: {
-        tipo: tipo,
+        tipo: ILike(`%${tipo}%`),
       },
       relations: {
-        // servico: true,
+        servico: true,
       },
     });
   }

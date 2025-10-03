@@ -22,6 +22,7 @@ export class AuthService {
       password,
       buscaUsuario.senha,
     );
+
     if (buscaUsuario && matchPassword) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { senha, ...resposta } = buscaUsuario;
