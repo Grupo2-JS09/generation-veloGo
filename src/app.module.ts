@@ -18,7 +18,7 @@ import { AuthModule } from './auth/auth.module';
       password: 'root',
       database: 'db_veloGo',
       entities: [Usuario, Servico, Categoria],
-      synchronize: true,
+      synchronize: false,
       // logging: true,
     }),
     UsuarioModule,
