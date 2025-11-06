@@ -31,7 +31,7 @@ export class ServicoService {
     });
 
     if (!servico)
-      throw new HttpException('Postagem não encontrada', HttpStatus.NOT_FOUND);
+      throw new HttpException('Serviço não encontrada', HttpStatus.NOT_FOUND);
 
     return servico;
   }
